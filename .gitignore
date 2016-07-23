@@ -1,3 +1,5 @@
 .idea/
 .mvn/
 GoEuroTest.iml
+target
+output.csv
