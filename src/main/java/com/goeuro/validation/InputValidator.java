@@ -10,7 +10,11 @@ public class InputValidator {
         if (args.length != 1) {
             return false;
         }
-        String input = uncapitalize(trimAllWhitespace(args[0]));
+        return doValidate(args[0]);
+    }
+
+    private boolean doValidate(String arg) {
+        String input = uncapitalize(trimAllWhitespace(arg));
         if (!hasLength(input) ){
             return false;
         }
