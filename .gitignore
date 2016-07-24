@@ -1,5 +1,5 @@
 .idea/
 .mvn/
 GoEuroTest.iml
-target
 output.csv
+src/main/resources/templates/
