@@ -22,7 +22,7 @@ public class Application implements CommandLineRunner {
 	public static final String BASE_PATH = "http://api.goeuro.com/api/v2/position/suggest/en/";
 	public static final String INVALID_ARGS_COUNT = "\nNope!\nPlease use exactly one program argument.";
 	public static final String NO_RESULT = "\nNope!\nNo results for the argument you've used.";
-	private static final String CSV_CREATED = "\nYES!\noutput.csv has been created in target directory.";
+	private static final String CSV_CREATED = "\nYES!\noutput.csv has been created in same directory as JAR-File.";
 
 	@Autowired
 	InputValidator inputValidator;
