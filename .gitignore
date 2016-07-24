@@ -3,9 +3,5 @@
 GoEuroTest.iml
 output.csv
 src/main/resources/templates/
-target/classes
-target/generated-sources
-target/maven-archiver
-target/maven-status
-target/*.original
+target/
 dependency-reduced-pom.xml
