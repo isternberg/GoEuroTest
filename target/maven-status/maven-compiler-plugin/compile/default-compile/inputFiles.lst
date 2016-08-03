@@ -1,8 +1,0 @@
-/home/sterni/dev/boot/GoEuroTest/src/main/java/com/goeuro/entities/GeoPosition.java
-/home/sterni/dev/boot/GoEuroTest/src/main/java/com/goeuro/validation/InputValidator.java
-/home/sterni/dev/boot/GoEuroTest/src/main/java/com/goeuro/convertors/ToCSVConverter.java
-/home/sterni/dev/boot/GoEuroTest/src/main/java/com/goeuro/data/GoEuroConsumer.java
-/home/sterni/dev/boot/GoEuroTest/src/main/java/com/goeuro/exceptions/CSVException.java
-/home/sterni/dev/boot/GoEuroTest/src/main/java/com/goeuro/entities/GoEuroData.java
-/home/sterni/dev/boot/GoEuroTest/src/main/java/com/goeuro/Application.java
-/home/sterni/dev/boot/GoEuroTest/src/main/java/com/goeuro/appUtils/AppUtils.java
