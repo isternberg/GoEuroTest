@@ -1,7 +1,7 @@
 com/goeuro/data/GoEuroConsumer.class
 com/goeuro/entities/GoEuroData.class
-com/goeuro/data/APIConsumer.class
 com/goeuro/entities/GeoPosition.class
+com/goeuro/exceptions/CSVException.class
 com/goeuro/appUtils/AppUtils.class
 com/goeuro/data/GoEuroConsumer$1.class
 com/goeuro/validation/InputValidator.class

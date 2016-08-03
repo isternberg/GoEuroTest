@@ -2,35 +2,36 @@ package com.goeuro.convertors;
 
 
 import com.goeuro.entities.GoEuroData;
+import com.goeuro.exceptions.CSVException;
 
 import java.io.*;
 import java.util.List;
 
 public class ToCSVConverter {
     private static final String SEPARATOR = ",";
-    public static final String CSV_FILE = "output.csv";
-    public static final String ENCODING = "UTF-8";
+    private static final String CSV_FILE = "output.csv";
+    private static final String ENCODING = "UTF-8";
 
-    public static void writeToCSV(List<GoEuroData> list)
-    {
-        try(BufferedWriter bw = new BufferedWriter(new OutputStreamWriter
-                (new FileOutputStream(CSV_FILE), ENCODING)))
-        {
-            list.forEach(item->convertLine(bw,item));
+    public static void writeToCSV(List<GoEuroData> list) throws CSVException {
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter
+                (new FileOutputStream(CSV_FILE), ENCODING))) {
+            for (GoEuroData item : list) {
+                convertLine(bw, item);
+            }
             bw.flush();
+        } catch (IOException e) {
+            throw new CSVException(e);
         }
-        catch (UnsupportedEncodingException | FileNotFoundException e) {}
-        catch (IOException e){}
     }
 
-    private static void convertLine(BufferedWriter bw, GoEuroData item){
+    private static void convertLine(BufferedWriter bw, GoEuroData item) throws CSVException {
         StringBuffer oneLine = new StringBuffer();
         appendData(item, oneLine);
         try {
             bw.write(oneLine.toString());
             bw.newLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new CSVException(e);
         }
     }
 

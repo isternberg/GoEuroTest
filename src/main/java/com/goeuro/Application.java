@@ -2,8 +2,9 @@ package com.goeuro;
 
 import com.goeuro.appUtils.AppUtils;
 import com.goeuro.convertors.ToCSVConverter;
-import com.goeuro.data.APIConsumer;
+import com.goeuro.data.GoEuroConsumer;
 import com.goeuro.entities.GoEuroData;
+import com.goeuro.exceptions.CSVException;
 import com.goeuro.validation.InputValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ public class Application implements CommandLineRunner {
 	InputValidator inputValidator;
 
 	@Autowired
-	APIConsumer apiConsumer;
+	GoEuroConsumer apiConsumer;
 
 	@Autowired
 	AppUtils utils;
@@ -38,18 +39,23 @@ public class Application implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(String... args){
 		if (!inputValidator.inputOK(args)){
 			log.error("Terminating due to wrong user input");
 			utils.terminate(INVALID_ARGS_COUNT);
 		}
 		String city= args[0];
-		List<GoEuroData> responseBody = apiConsumer.consume(city);
-		if (responseBody.isEmpty()){
+		List<GoEuroData> response = apiConsumer.getFor(city);
+		if (response.isEmpty()){
+			log.info("No results for city: " + city);
 			utils.terminate(NO_RESULT);
 		}
-		ToCSVConverter.writeToCSV(responseBody);
-		log.info("csv successfully created for city: " + city);
+		try {
+			ToCSVConverter.writeToCSV(response);
+			log.info("csv successfully created for city: " + city);
+		} catch (CSVException e) {
+			log.error("could not write csv file. " + e.getMessage());
+		}
 		utils.terminate(CSV_CREATED);
 	}
 }

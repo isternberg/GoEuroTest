@@ -13,15 +13,14 @@ import java.util.List;
 import static com.goeuro.Application.BASE_PATH;
 
 @Component
-public class GoEuroConsumer implements APIConsumer{
+public class GoEuroConsumer{
 
     public static final HttpEntity<?> REQUEST_ENTITY = null;
 
-    @Override
-    public List<GoEuroData> consume(String... args) {
+    public List<GoEuroData> getFor(String arg) {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<List<GoEuroData>> data =
-            restTemplate.exchange(BASE_PATH + args[0],
+            restTemplate.exchange(BASE_PATH + arg,
                     HttpMethod.GET, REQUEST_ENTITY,
                     new ParameterizedTypeReference<List<GoEuroData>>() {});
         return data.getBody();
